@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
 import { env } from '../config/env';
 
 export class AppError extends Error {
@@ -21,25 +22,45 @@ export function notFoundHandler(
   next(new AppError(`Route not found: ${req.method} ${req.originalUrl}`, 404));
 }
 
+function resolveError(err: Error | AppError): {
+  statusCode: number;
+  message: string;
+} {
+  if (err instanceof AppError) {
+    return { statusCode: err.statusCode, message: err.message };
+  }
+
+  if (err instanceof mongoose.Error.ValidationError) {
+    const message = Object.values(err.errors)
+      .map((e) => e.message)
+      .join(', ');
+    return { statusCode: 400, message };
+  }
+
+  if ('code' in err && err.code === 11000) {
+    return { statusCode: 409, message: 'Email already in use' };
+  }
+
+  return {
+    statusCode: 500,
+    message: env.isProduction ? 'Internal server error' : err.message,
+  };
+}
+
 export function errorHandler(
   err: Error | AppError,
   _req: Request,
   res: Response,
   _next: NextFunction
 ): void {
-  const statusCode = err instanceof AppError ? err.statusCode : 500;
-  const message =
-    err instanceof AppError || !env.isProduction
-      ? err.message
-      : 'Internal server error';
-
-  if (statusCode >= 500) {
+ const {statusCode, message} = resolveError(err);
+  if (!env.isProduction) {
     console.error('[Error]', err);
   }
 
   res.status(statusCode).json({
     success: false,
     message,
-    ...(env.isProduction ? {} : { stack: err.stack }),
+    
   });
 }
