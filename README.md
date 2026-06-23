@@ -7,7 +7,7 @@ An AI-powered travel planning platform that helps users create personalized trav
 🔗 Live Demo
 
 Frontend:
-https://ai-travel-planner-4mkw54ohp-jayakesharwanis-projects.vercel.app
+https://ai-travel-planner-efhdgn4a5-jayakesharwanis-projects.vercel.app
 
 Backend API:
 https://ai-travel-planner-ai.onrender.com
@@ -219,6 +219,8 @@ User Login/Register
  Authorized Request
 ```
 
+---
+
 Authorization
 
 Protected endpoints require:
@@ -261,6 +263,8 @@ Yes        No
  ▼         ▼
 Proceed   Reject Request
 ```
+
+---
 
 🤖 AI Agent Design
 
@@ -334,43 +338,6 @@ This feature significantly improves user experience compared to standard AI itin
 
 ---
 
-📸 Screenshots
-
-Landing Page
-
-"Landing Page" (./screenshots/landing-page.png)
-
----
-
-Login Page
-
-"Login" (./screenshots/login-page.png)
-
----
-
-Dashboard
-
-"Dashboard" (./screenshots/dashboard-page.png)
-
----
-
-Create Trip
-
-"Create Trip" (./screenshots/create-trip-page.png)
-
----
-
-Trip Details
-
-"Trip Details" (./screenshots/trip-details-page.png)
-
----
-
-AI Generated Itinerary
-
-"Itinerary" (./screenshots/itinerary-page.png)
-
----
 
 ⚙ Local Setup Instructions
 
