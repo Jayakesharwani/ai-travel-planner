@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/trips";
+const API_URL = "https://ai-travel-planner-ai.onrender.com/api/trips";
 
 function getAuthHeaders() {
   const token = localStorage.getItem("token");

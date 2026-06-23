@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
 api.interceptors.request.use((config) => {
   const token =
-    typeof window !== 'undefined'
-      ? localStorage.getItem('token')
+    typeof window !== "undefined"
+      ? localStorage.getItem("token")
       : null;
 
   if (token) {
