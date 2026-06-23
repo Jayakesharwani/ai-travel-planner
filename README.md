@@ -6,8 +6,8 @@ An AI-powered travel planning platform that helps users create personalized trav
 
 🔗 Live Demo
 
-**Frontend:**
-ai-travel-planner-4mkw54ohp-jayakesharwanis-projects.vercel.app
+Frontend:
+https://ai-travel-planner-4mkw54ohp-jayakesharwanis-projects.vercel.app
 
 Backend API:
 https://ai-travel-planner-ai.onrender.com
@@ -149,28 +149,30 @@ Gemini provides:
 
 ---
 
-🏗 High-Level Architecture
+## 🏗 High-Level Architecture
 
-User
- │
- ▼
-Next.js Frontend
- │
- ▼
-Express Backend API
- │
- ├── Authentication Layer
- │       │
- │       ▼
- │     JWT
- │
- ├── Trip Service
- │       │
- │       ▼
- │   Gemini AI
- │
- └── MongoDB Atlas
-
+```text
+                    ┌──────────────────┐
+                    │      User        │
+                    └────────┬─────────┘
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │  Next.js Frontend │
+                    └────────┬─────────┘
+                             │ REST API
+                             ▼
+                    ┌──────────────────┐
+                    │ Express Backend  │
+                    └───────┬──────────┘
+                            │
+            ┌───────────────┼───────────────┐
+            │                               │
+            ▼                               ▼
+    ┌───────────────┐              ┌────────────────┐
+    │ MongoDB Atlas │              │ Gemini AI API │
+    └───────────────┘              └────────────────┘
+```
 Flow
 
 1. User creates a trip.
@@ -193,20 +195,29 @@ Authentication is implemented using:
 - JWT (JSON Web Tokens)
 - Password hashing with bcryptjs
 
-Flow:
+## 🔐 Authentication Flow
 
-Register/Login
-      │
-      ▼
-Generate JWT
-      │
-      ▼
-Store Token
-      │
-      ▼
-Protected Requests
-
----
+```text
+User Login/Register
+         │
+         ▼
+ Backend Validates Credentials
+         │
+         ▼
+ Generates JWT Token
+         │
+         ▼
+ Token Stored in Browser
+         │
+         ▼
+ User Accesses Protected Routes
+         │
+         ▼
+ JWT Middleware Verifies Token
+         │
+         ▼
+ Authorized Request
+```
 
 Authorization
 
@@ -228,6 +239,28 @@ Only authenticated users can:
 - Access personal travel data
 
 ---
+
+## 🛡 Authorization Flow
+
+```text
+Client Request
+      │
+      ▼
+Authorization Header
+(Bearer Token)
+      │
+      ▼
+JWT Middleware
+      │
+      ▼
+Token Valid?
+ ┌────┴────┐
+ │         │
+Yes        No
+ │         │
+ ▼         ▼
+Proceed   Reject Request
+```
 
 🤖 AI Agent Design
 
