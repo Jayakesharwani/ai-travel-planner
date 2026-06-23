@@ -6,7 +6,7 @@ An AI-powered travel planning platform that helps users create personalized trav
 
 🔗 Live Demo
 
-Frontend:
+**Frontend:**
 ai-travel-planner-4mkw54ohp-jayakesharwanis-projects.vercel.app
 
 Backend API:
