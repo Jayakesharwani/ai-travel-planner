@@ -184,6 +184,35 @@ Flow
 7. Backend saves generated content.
 8. Frontend displays results.
 
+--- 
+
+## Authentication Guide
+
+To access the application features, please create an account or log in.
+
+**Registration Requirements**
+
+- Name: Any valid name
+- Email: Must be a valid email format (example: "john@example.com")
+- Password:
+  - Minimum 6 characters
+  - Combination of letters and numbers recommended
+
+**Login**
+
+Use the same email and password that were used during registration.
+
+Demo Flow
+
+1. Register a new account.
+2. Log in using the registered credentials.
+3. Create a new trip.
+4. Generate an AI-powered itinerary.
+5. Edit activities or regenerate individual days.
+6. Save your customized travel plan.
+
+«Note: User accounts and generated itineraries are stored securely in MongoDB Atlas.»
+
 ---
 
 🔐 Authentication & Authorization
